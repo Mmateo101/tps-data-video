@@ -1,193 +1,225 @@
 # Guía de Grabación — TPs_data
 
-Instrucciones paso a paso para cada presentador. Lee tu sección completa antes de grabar.
+Guión completo del video. Una sola persona lee todo de corrido (~5 minutos).
+El teleprompter avanza las animaciones automáticamente al detectar las palabras clave.
 
 ---
 
-## Configuración General (todos)
+## Antes de grabar
 
-### Antes de empezar
+```bash
+cd teleprompter && npm run dev   # abre http://localhost:3001 en Chrome
+```
 
-1. **Instala el teleprompter:**
-   ```bash
-   cd teleprompter
-   npm install
-   npm run dev
-   ```
-2. Abre **Chrome** y ve a `http://localhost:3001`
-3. Configura OBS:
-   - Fuente: Captura de pantalla completa (1920×1080)
-   - Agrega tu cámara como fuente separada (esquina inferior derecha recomendada)
-   - Audio: micrófono de tu computadora o headset
-4. Haz una prueba de 30 segundos para verificar audio y video
-5. Click **"🎤 Iniciar escucha"** justo antes de empezar a leer
-
-### Cómo funciona
-
-El teleprompter escucha tu voz en tiempo real. Cuando dices una **palabra clave**, la animación avanza automáticamente al keyframe correcto y se reproduce durante la duración indicada.
-
-- **Panel izquierdo:** tu script (la línea actual aparece resaltada en verde)
-- **Panel derecho:** la animación que verá la audiencia
-- **Si una palabra no se detecta:** usa `← Anterior` / `Siguiente →` para avanzar manualmente
+- Configura OBS: captura de pantalla completa (1920×1080) + cámara en esquina inferior derecha
+- Click **"🎤 Iniciar escucha"** justo antes de empezar
+- Si una palabra no se detecta: presiona **ESPACIO** para avanzar
 
 ---
 
-## Persona 3 — Escenas 1, 2 y 8 (Project Manager)
+## ESCENA 1 — Introducción · 0:00–0:40
 
-**Color:** Naranja `#ff6b35`
+> **Lee este texto:**
 
-### Escena 1 — Introducción (frames 0–1199, 40 segundos)
+"En SAP, un sistema ERP maneja finanzas, operaciones y datos críticos de negocio.
+Cuando ocurre un **ataque** y nadie lo detecta a tiempo, el daño ya está hecho."
 
-| # | Di esta línea | Palabra clave que activa la animación |
-|---|--------------|---------------------------------------|
-| 1 | *"¿Qué pasa cuando un **ataque** ocurre en SAP?"* | **ataque** |
-| 2 | *"La **industria** tarda en promedio 287 días en detectar un breach."* | **industria** |
-| 3 | *"Nosotros lo detectamos en **milisegundos**. Esto es TPs_data."* | **milisegundos** |
+"La **industria** tarda en promedio **287** días en detectar una brecha.
+Cada incidente cuesta 4.45 millones de dólares.
+Y el 43% de los ataques apuntan directamente a infraestructura ERP."
 
-**Animación activada:** Pregunta → Tarjetas estadísticas → Línea final con el equipo
+"Nosotros construimos un SOC — un Security Operations Center — que lo detecta
+en **milisegundos**. Esto es TPs_data."
 
----
-
-### Escena 2 — Arquitectura (frames 1200–2399, 40 segundos)
-
-| # | Di esta línea | Palabra clave |
-|---|--------------|---------------|
-| 4 | *"Nuestra **arquitectura** corre completamente en SAP BTP."* | **arquitectura** |
-| 5 | *"Esos logs pasan por un **pipeline** de FastAPI con asyncio..."* | **pipeline** |
-| 6 | *"...y el resultado va a tres **destinos** simultáneos: HANA, Webhook y Dashboard."* | **destinos** |
-
-**Animación activada:** Nodo SAP API → Pipeline + ML Model → HANA + Webhook + Dashboard
+| # | Palabra clave | Alternativas | Frame | Animación |
+|---|--------------|-------------|-------|-----------|
+| 1 | **ataque** | ocurre, detecta | 0 | Pregunta aparece |
+| 2 | **industria** | promedio, 287 | 80 | Tarjetas de estadísticas |
+| 3 | **milisegundos** | detectamos, TPs_data | 300 | Línea final + equipo |
 
 ---
 
-### Escena 8 — Impacto de Negocio (frames 8100–8999, 30 segundos)
+## ESCENA 2 — Arquitectura · 0:40–1:20
 
-| # | Di esta línea | Palabra clave |
-|---|--------------|---------------|
-| 24 | *"¿Qué **significa** esto para SAP?"* | **significa** |
-| 25 | *"Usamos aprendizaje no supervisado — no necesitamos datos **etiquetados**."* | **etiquetados** |
-| 26 | *"Tercero, corre **nativamente** en BTP, sin fricción con el ecosistema SAP."* | **nativamente** |
-| 27 | *"Menos tiempo detectando. Más tiempo **respondiendo**."* | **respondiendo** |
+> **Lee este texto:**
 
-**Animación activada:** Tarjeta MTTD → Tarjeta no supervisado → Tarjeta nativo BTP → Frase final
+"Nuestra **arquitectura** corre completamente en SAP BTP. El flujo empieza en la API de SAP,
+donde un fetcher asíncrono jalamos logs de seguridad de forma paginada cada 30 segundos."
 
----
+"Esos logs pasan por un **pipeline** de FastAPI con asyncio, llegan al modelo de Machine Learning,
+y el resultado va a tres **destinos** simultáneos: SAP HANA para persistencia,
+el Webhook de SAP para alertas, y nuestro dashboard para visualización en tiempo real."
 
-## Persona 1 — Escenas 3 y 4 (AI & ML Engineer)
+"Todo el stack vive dentro del ecosistema SAP — cero dependencias externas."
 
-**Color:** Morado `#a855f7`
-
-### Escena 3 — OBSERVE (frames 2400–3599, 40 segundos)
-
-| # | Di esta línea | Palabra clave |
-|---|--------------|---------------|
-| 7 | *"El primer paso del pipeline es **OBSERVE**."* | **OBSERVE** |
-| 8 | *"...que **normaliza** los nombres de columnas y valida el schema."* | **normaliza** |
-| 9 | *"El output es un **DataFrame** de pandas..."* | **DataFrame** |
-| 10 | *"Ya desde aquí podemos ver **patrones**: IPs con muchos errores, actividad sospechosa."* | **patrones** |
-
-**Animación activada:** Label OBSERVE → log_parser.py → Tabla de logs → Filas sospechosas iluminadas
+| # | Palabra clave | Alternativas | Frame | Animación |
+|---|--------------|-------------|-------|-----------|
+| 4 | **arquitectura** | BTP, corre | 1200 | SAP API aparece |
+| 5 | **pipeline** | FastAPI, asyncio | 1340 | Pipeline + ML Model |
+| 6 | **destinos** | HANA, simultáneos | 1460 | HANA + Webhook + Dashboard |
 
 ---
 
-### Escena 4 — ANALYZE & DETECT (frames 3600–4799, 40 segundos)
+## ESCENA 3 — OBSERVE · 1:20–2:00
 
-| # | Di esta línea | Palabra clave |
-|---|--------------|---------------|
-| 11 | *"En la fase **ANALYZE**, el módulo features.py extrae métricas por IP."* | **ANALYZE** |
-| 12 | *"Esas features entran al **Isolation Forest**, un modelo no supervisado."* | **Isolation Forest** |
-| 13 | *"El modelo la clasifica automáticamente según el **umbral**: severidad Alta."* | **umbral** |
+> **Lee este texto:**
 
-**Animación activada:** Features con métricas → Label DETECT + score animado → Alerta ALTA
+"El primer paso del pipeline es **OBSERVE**. El módulo sap_log_fetcher.py hace llamadas
+asíncronas y paginadas a la API de SAP, o en modo local lee CSVs de muestra.
+La respuesta cruda pasa por log_parser.py, que **normaliza** los nombres de columnas
+y valida que el schema sea correcto."
 
-> **Nota:** "Isolation Forest" son dos palabras — di ambas claramente.
+"El output es un **DataFrame** de pandas con columnas estandarizadas:
+datetime, source_ip, event_type, status y response_time."
 
----
+"Ya desde aquí podemos ver **patrones**: esta IP está generando múltiples errores 403 en milisegundos."
 
-## Persona 2 — Escena 5 (Cloud Integration)
+| # | Palabra clave | Alternativas | Frame | Animación |
+|---|--------------|-------------|-------|-----------|
+| 7 | **OBSERVE** | primer paso, fetcher | 2400 | Label OBSERVE + flujo |
+| 8 | **normaliza** | parser, schema | 2530 | log_parser.py aparece |
+| 9 | **DataFrame** | output, pandas | 2600 | Tabla de logs |
+| 10 | **patrones** | IP, errores | 2850 | Filas sospechosas se iluminan |
 
-**Color:** Azul `#3b82f6`
-
-### Escena 5 — Cloud & BTP (frames 4800–5999, 40 segundos)
-
-| # | Di esta línea | Palabra clave |
-|---|--------------|---------------|
-| 14 | *"Todo corre en SAP BTP **Cloud Foundry**."* | **Cloud Foundry** |
-| 15 | *"Hacia afuera nos conectamos usando **connection pool** a SAP HANA Cloud..."* | **connection pool** |
-| 16 | *"El sistema lleva corriendo en BTP desde el 4 de **mayo**."* | **mayo** |
-
-**Animación activada:** Contenedor BTP → Conexiones externas → Badge "Live"
-
-> **Nota:** "connection pool" — di en inglés, claro y pausado.
+> Pronuncia OBSERVE y ANALYZE en español: "ob-ser-ve", "a-na-li-se".
 
 ---
 
-## Persona 5 — Escena 6 (Backend Engineer)
+## ESCENA 4 — ANALYZE & DETECT · 2:00–2:40
 
-**Color:** Cyan `#00d4ff`
+> **Lee este texto:**
 
-### Escena 6 — Flujo de Ataque Real (frames 6000–7199, 40 segundos)
+"En la fase **ANALYZE**, el módulo features.py agrupa los logs por IP y extrae
+13 métricas de comportamiento. Entre las más importantes: error_rate y brute_force_score."
 
-| # | Di esta línea | Palabra clave |
-|---|--------------|---------------|
-| 17 | *"Déjenme mostrarles el **flujo completo** de un ataque real."* | **flujo completo** |
-| 18 | *"La IP 192.168.4.77 genera **847** requests en un solo ciclo."* | **847** |
-| 19 | *"El extractor de features detecta **error rate** de 0.73..."* | **error rate** |
-| 20 | *"El Isolation Forest devuelve un score **negativo**: -0.82."* | **negativo** |
-| 21 | *"Se genera el **Incident Report**, se dispara el Webhook y queda persistido en HANA."* | **Incident Report** |
-| 22 | *"**MTTD** total del pipeline: 245 milisegundos."* | **MTTD** |
+"Esas features entran al **Isolation Forest** — un modelo no supervisado
+que aprendió cómo se ve el tráfico normal."
 
-**Animación activada:** Línea de tiempo → t+0ms → t+45/112ms → t+180ms → t+210–241ms → MTTD 245ms
+"Esta IP obtuvo -0.82. Nuestro **umbral** está en -0.50.
+El modelo la clasifica automáticamente como severidad Alta."
 
-> **Nota:** "error rate" en inglés. "MTTD" — deletrea las letras: em-te-te-de.
+| # | Palabra clave | Alternativas | Frame | Animación |
+|---|--------------|-------------|-------|-----------|
+| 11 | **ANALYZE** | features, métricas | 3600 | Features aparecen |
+| 12 | **Isolation Forest** | modelo, supervisado | 3860 | Label DETECT + score animado |
+| 13 | **umbral** | severidad, Alta | 4080 | Alerta ALTA aparece |
 
----
-
-## Persona 4 — Escena 7 (Frontend Engineer)
-
-**Color:** Rosa `#ec4899`
-
-### Escena 7 — Dashboard (frames 7200–8099, 30 segundos)
-
-| # | Di esta línea | Palabra clave |
-|---|--------------|---------------|
-| 23 | *"El **dashboard** de operaciones corre en Streamlit y muestra KPIs en tiempo real."* | **dashboard** |
-| 24 | *"Abajo tenemos dos **gráficas**: anomalías por hora y evolución del score."* | **gráficas** |
-| 25 | *"Y el **feed** de logs en vivo muestra cada IP flaggeada al analista."* | **feed** |
-
-**Animación activada:** Dashboard + KPIs → Gráficas → Log feed
+> "Isolation Forest" son dos palabras — di ambas claramente en inglés.
 
 ---
 
-## Consejos para Todos
+## ESCENA 5 — Cloud & BTP · 2:40–3:20
+
+> **Lee este texto:**
+
+"Todo corre en SAP BTP **Cloud Foundry**. Dentro de la aplicación tenemos tres componentes:
+el servidor FastAPI, el pipeline asyncio, y el modelo de ML."
+
+"Hacia afuera, nos conectamos a SAP HANA Cloud usando un **connection pool**.
+El Webhook de SAP recibe un POST por cada anomalía de alta severidad."
+
+"El sistema lleva corriendo en BTP desde el 4 de **mayo** sin interrupciones."
+
+| # | Palabra clave | Alternativas | Frame | Animación |
+|---|--------------|-------------|-------|-----------|
+| 14 | **Cloud Foundry** | BTP, corremos | 4800 | Contenedor BTP aparece |
+| 15 | **connection pool** | HANA, latencia | 5060 | Conexiones externas |
+| 16 | **mayo** | corriendo, interrupciones | 5300 | Badge Live en BTP |
+
+> "Cloud Foundry" y "connection pool" — di en inglés, claro y pausado.
+
+---
+
+## ESCENA 6 — Flujo de Ataque Real · 3:20–4:00
+
+> **Lee este texto:**
+
+"Déjenme mostrarles el **flujo completo** de un ataque real."
+
+"A t+0 milisegundos, la IP 192.168.4.77 genera **847** requests en un solo ciclo."
+
+"A los 112ms, el extractor detecta error_rate de 0.73 y brute_force_score de 0.91.
+A los 180ms, el Isolation Forest devuelve un score **negativo** de -0.82."
+
+"Se genera el **Incident Report**, se dispara el Webhook,
+y el registro queda persistido en HANA."
+
+"**MTTD** total del pipeline: 245 milisegundos."
+
+| # | Palabra clave | Alternativas | Frame | Animación |
+|---|--------------|-------------|-------|-----------|
+| 17 | **flujo completo** | ataque real | 6000 | Línea de tiempo aparece |
+| 18 | **847** | requests, ciclo | 6080 | Paso t+0ms |
+| 19 | **negativo** | score, 0.82 | 6320 | Paso t+180ms — score |
+| 20 | **Incident Report** | Webhook, HANA | 6480 | Pasos t+210ms–t+241ms |
+| 21 | **MTTD** | 245, total | 6750 | MTTD 245ms aparece |
+
+> "MTTD" — deletrea las letras: em-te-te-de.
+
+---
+
+## ESCENA 7 — Dashboard · 4:00–4:30
+
+> **Lee este texto:**
+
+"El **dashboard** de operaciones corre en Streamlit y se actualiza cada 5 segundos."
+
+"Abajo tenemos dos **gráficas** en tiempo real: anomalías por hora y evolución del score."
+
+"Y el **feed** de logs en vivo muestra cada IP flaggeada con su score y nivel de severidad."
+
+| # | Palabra clave | Alternativas | Frame | Animación |
+|---|--------------|-------------|-------|-----------|
+| 22 | **dashboard** | Streamlit, KPIs | 7200 | Dashboard + KPIs aparecen |
+| 23 | **gráficas** | anomalías, evolución | 7400 | Gráficas aparecen |
+| 24 | **feed** | analista, severidad | 7600 | Log feed aparece |
+
+---
+
+## ESCENA 8 — Impacto de Negocio · 4:30–5:00
+
+> **Lee este texto:**
+
+"¿Qué **significa** esto para SAP? Pasamos de 287 días a 245 milisegundos."
+
+"Segundo, usamos aprendizaje no supervisado — el modelo no necesita ejemplos **etiquetados**."
+
+"Tercero, corre **nativamente** en BTP, sin fricción."
+
+"Menos tiempo detectando. Más tiempo **respondiendo**."
+
+| # | Palabra clave | Alternativas | Frame | Animación |
+|---|--------------|-------------|-------|-----------|
+| 25 | **significa** | SAP, impacto | 8100 | Tarjeta MTTD aparece |
+| 26 | **etiquetados** | supervisado, aprende | 8300 | Tarjeta no supervisado |
+| 27 | **nativamente** | fricción, ecosistema | 8450 | Tarjeta nativo BTP |
+| 28 | **respondiendo** | detectando, tiempo | 8700 | Frase final aparece |
+
+---
+
+## Después de grabar
+
+Guarda el archivo como `persona1.mp4` y súbelo a Google Drive:
+[https://drive.google.com/drive/folders/1wRCiAsws3_8QKuq7vitiQDOR9gP9tpXO?usp=drive_link](https://drive.google.com/drive/folders/1wRCiAsws3_8QKuq7vitiQDOR9gP9tpXO?usp=drive_link)
+
+Pega el link de tu archivo en `drive-links.json` bajo `"persona1"` y luego:
+
+```bash
+cd ..
+npm run render:full
+```
+
+---
+
+## Consejos
 
 ### Si una keyword no se detecta
-- Usa los botones **← Anterior** / **Siguiente →** para avanzar manualmente
-- Habla un poco más despacio y articulado al llegar a las palabras clave
-- Edita `teleprompter/src/keyword-map.ts` y agrega variantes fonéticas en `alternatives[]`
-
-### Antes de cada take
-- Verifica que el indicador de estado diga **"🟢 Escuchando..."**
-- Haz una prueba diciendo la primera keyword de tu escena
-
-### Palabras en inglés
-Las siguientes palabras deben decirse en inglés para ser detectadas correctamente:
-- **Cloud Foundry** — /klaʊd ˈfaʊndri/
-- **connection pool** — /kəˈnɛkʃən puːl/
-- **pipeline** — /ˈpaɪplaɪn/
-- **Isolation Forest** — /ˌaɪsəˈleɪʃən ˈfɒrɪst/
-- **DataFrame** — /ˈdeɪtəfreɪm/
-- **error rate** — /ˈɛrər reɪt/
-- **feed** — /fiːd/
-- **dashboard** — /ˈdæʃbɔːrd/
-- **MTTD** — deletrea: M-T-T-D
-- **OBSERVE** / **ANALYZE** — en mayúsculas conceptuales, pronúncialas en español: "ob-ser-ve", "a-na-li-se"
+- Presiona **ESPACIO** para avanzar — nunca te quedas atascado
+- Habla despacio y articulado en las palabras clave
+- Agrega variantes en `teleprompter/src/keyword-map.ts` → campo `alternatives[]`
 
 ### OBS — Configuración recomendada
 ```
-Resolución de salida: 1920×1080
-FPS: 30
-Bitrate video: 8000 Kbps (CBR)
-Codificador: x264 o NVENC
-Audio: 320 Kbps AAC, 48kHz
+Resolución: 1920×1080 · FPS: 30 · Bitrate: 8000 Kbps CBR
+Codificador: x264 o NVENC · Audio: 320 Kbps AAC, 48kHz
 ```

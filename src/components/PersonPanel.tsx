@@ -1,32 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { interpolate, spring, staticFile, Video } from 'remotion';
 import { COLORS, FONTS, PEOPLE } from '../constants';
+import {
+  runDetection,
+  onDetectionComplete,
+  detectedMode,
+} from '../utils/videoDetector';
 
 interface PersonPanelProps {
   personId: number | null;
   frame: number;
+  sceneNumber?: number;
 }
 
-export const PersonPanel: React.FC<PersonPanelProps> = ({ personId, frame }) => {
-  const [videoExists, setVideoExists] = useState(false);
+export const PersonPanel: React.FC<PersonPanelProps> = ({ personId, frame, sceneNumber }) => {
+  const [mode, setMode] = useState(detectedMode);
 
   useEffect(() => {
     if (!personId) return;
-    fetch(staticFile('videos/persona1.mp4'), { method: 'HEAD' })
-      .then((r) => { if (r.ok) setVideoExists(true); })
-      .catch(() => {});
+    runDetection();
+    const unsub = onDetectionComplete(() => setMode(detectedMode));
+    return unsub;
   }, [personId]);
 
   if (!personId) return null;
 
   const person = PEOPLE[personId];
   const breathe = interpolate(frame % 60, [0, 30, 60], [0.6, 1, 0.6]);
-
   const nameOpacity = spring({
     frame: frame - 10,
     fps: 30,
     config: { damping: 14, stiffness: 120 },
   });
+
+  let videoSrc: string | null = null;
+  if (mode === 'scenes') {
+    videoSrc = staticFile(`videos/scene${sceneNumber ?? 1}.mp4`);
+  } else if (mode === 'single') {
+    videoSrc = staticFile('videos/scene1.mp4');
+  }
 
   return (
     <div
@@ -52,9 +64,9 @@ export const PersonPanel: React.FC<PersonPanelProps> = ({ personId, frame }) => 
           position: 'relative',
         }}
       >
-        {videoExists ? (
+        {videoSrc ? (
           <Video
-            src={staticFile('videos/persona1.mp4')}
+            src={videoSrc}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         ) : (

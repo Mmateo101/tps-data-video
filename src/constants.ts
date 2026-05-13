@@ -28,11 +28,11 @@ export const SCENES: Record<number, number> = {
 };
 
 export const PEOPLE: Record<number, { name: string; role: string; color: string }> = {
-  1: { name: 'Presentador', role: 'AI & ML Engineer',    color: '#a855f7' },
-  2: { name: 'Presentador', role: 'Cloud Integration',   color: '#3b82f6' },
-  3: { name: 'Presentador', role: 'Project Manager',     color: '#ff6b35' },
-  4: { name: 'Presentador', role: 'Frontend Engineer',   color: '#ec4899' },
-  5: { name: 'Presentador', role: 'Backend Engineer',    color: '#00d4ff' },
+  1: { name: 'Daniel Díaz de León Morales',  role: 'AI & ML Engineer',    color: '#a855f7' },
+  2: { name: 'Mateo Rodolfo Flores Torres',  role: 'Cloud Integration',   color: '#3b82f6' },
+  3: { name: 'Juan Carlos Livas Reyes',      role: 'Project Manager',     color: '#ff6b35' },
+  4: { name: 'Erick Morales Nájera',         role: 'Frontend Engineer',   color: '#ec4899' },
+  5: { name: 'Narciso Said Garrido Ortiz',   role: 'Backend Engineer',    color: '#00d4ff' },
 };
 
 export const SCENE_PERSON: Record<number, number | null> = {

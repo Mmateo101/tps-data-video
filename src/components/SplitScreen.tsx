@@ -79,7 +79,7 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({
             justifyContent: 'center',
           }}
         >
-          <PersonPanel personId={personId} frame={frame} />
+          <PersonPanel personId={personId} frame={frame} sceneNumber={sceneNumber} />
         </div>
       )}
     </div>

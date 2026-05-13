@@ -13,7 +13,7 @@ export const Root: React.FC = () => {
     <Composition
       id="MainVideo"
       component={MainVideo}
-      durationInFrames={Object.values(SCENES).reduce((a, b) => a + b, 0) * FPS}
+      durationInFrames={Object.values(SCENES).reduce((a, b) => a + b, 0) * FPS + 90}
       fps={FPS}
       width={WIDTH}
       height={HEIGHT}

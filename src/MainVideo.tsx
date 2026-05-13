@@ -1,6 +1,8 @@
+import React from 'react';
 import { Sequence } from 'remotion';
 import { SCENES, SCENE_PERSON, FPS } from './constants';
 import { SplitScreen } from './components/SplitScreen';
+import { Scene0Welcome } from './scenes/Scene0Welcome';
 import { Scene1Intro } from './scenes/Scene1Intro';
 import { Scene2Architecture } from './scenes/Scene2Architecture';
 import { Scene3Observe } from './scenes/Scene3Observe';
@@ -10,6 +12,8 @@ import { Scene6AttackFlow } from './scenes/Scene6AttackFlow';
 import { Scene7Dashboard } from './scenes/Scene7Dashboard';
 import { Scene8Business } from './scenes/Scene8Business';
 import { Scene9Closing } from './scenes/Scene9Closing';
+
+const WELCOME_FRAMES = 90;
 
 const sceneComponents = [
   Scene1Intro,
@@ -26,12 +30,15 @@ export const MainVideo: React.FC = () => {
   const offsets: number[] = [];
   let cumulative = 0;
   for (let i = 1; i <= 9; i++) {
-    offsets.push(cumulative * FPS);
+    offsets.push(WELCOME_FRAMES + cumulative * FPS);
     cumulative += SCENES[i];
   }
 
   return (
     <>
+      <Sequence from={0} durationInFrames={WELCOME_FRAMES}>
+        <Scene0Welcome />
+      </Sequence>
       {sceneComponents.map((SceneComponent, idx) => {
         const sceneNum = idx + 1;
         const personId = SCENE_PERSON[sceneNum];
