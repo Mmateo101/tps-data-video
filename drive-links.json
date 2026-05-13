@@ -1,0 +1,27 @@
+{
+  "persona1": {
+    "name": "Persona 1 — AI & ML Engineer",
+    "scenes": "3, 4",
+    "drive_url": ""
+  },
+  "persona2": {
+    "name": "Persona 2 — Cloud Integration",
+    "scenes": "5",
+    "drive_url": ""
+  },
+  "persona3": {
+    "name": "Persona 3 — Project Manager",
+    "scenes": "1, 2, 8",
+    "drive_url": ""
+  },
+  "persona4": {
+    "name": "Persona 4 — Frontend Engineer",
+    "scenes": "7",
+    "drive_url": ""
+  },
+  "persona5": {
+    "name": "Persona 5 — Backend Engineer",
+    "scenes": "6",
+    "drive_url": ""
+  }
+}

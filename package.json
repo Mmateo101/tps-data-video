@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "remotion studio",
     "build": "remotion render MainVideo out/MainVideo.mp4",
-    "render-preview": "remotion render MainVideo out/preview.mp4 --scale=0.5 --jpeg-quality=80"
+    "render-preview": "remotion render MainVideo out/preview.mp4 --scale=0.5 --jpeg-quality=80",
+    "download": "python scripts/download_from_drive.py",
+    "render:full": "npm run download && npm run build"
   },
   "dependencies": {
     "@remotion/cli": "4.0.290",

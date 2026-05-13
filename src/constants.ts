@@ -28,13 +28,13 @@ export const SCENES: Record<number, number> = {
 };
 
 export const PEOPLE: Record<number, { name: string; role: string; color: string }> = {
-  1: { name: 'Persona 1', role: 'AI & ML Engineer',    color: '#a855f7' },
-  2: { name: 'Persona 2', role: 'Cloud Integration',   color: '#3b82f6' },
-  3: { name: 'Persona 3', role: 'Project Manager',     color: '#ff6b35' },
-  4: { name: 'Persona 4', role: 'Frontend Engineer',   color: '#ec4899' },
-  5: { name: 'Persona 5', role: 'Backend Engineer',    color: '#00d4ff' },
+  1: { name: 'Presentador', role: 'AI & ML Engineer',    color: '#a855f7' },
+  2: { name: 'Presentador', role: 'Cloud Integration',   color: '#3b82f6' },
+  3: { name: 'Presentador', role: 'Project Manager',     color: '#ff6b35' },
+  4: { name: 'Presentador', role: 'Frontend Engineer',   color: '#ec4899' },
+  5: { name: 'Presentador', role: 'Backend Engineer',    color: '#00d4ff' },
 };
 
 export const SCENE_PERSON: Record<number, number | null> = {
-  1: 3, 2: 3, 3: 1, 4: 1, 5: 2, 6: 5, 7: 4, 8: 3, 9: null,
+  1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: null,
 };

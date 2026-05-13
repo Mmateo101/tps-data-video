@@ -12,7 +12,7 @@ export const PersonPanel: React.FC<PersonPanelProps> = ({ personId, frame }) => 
 
   useEffect(() => {
     if (!personId) return;
-    fetch(staticFile(`videos/persona${personId}.mp4`), { method: 'HEAD' })
+    fetch(staticFile('videos/persona1.mp4'), { method: 'HEAD' })
       .then((r) => { if (r.ok) setVideoExists(true); })
       .catch(() => {});
   }, [personId]);
@@ -54,7 +54,7 @@ export const PersonPanel: React.FC<PersonPanelProps> = ({ personId, frame }) => 
       >
         {videoExists ? (
           <Video
-            src={staticFile(`videos/persona${personId}.mp4`)}
+            src={staticFile('videos/persona1.mp4')}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         ) : (
