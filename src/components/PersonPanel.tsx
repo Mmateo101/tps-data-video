@@ -66,6 +66,7 @@ export const PersonPanel: React.FC<PersonPanelProps> = ({ personId, frame, scene
       >
         {videoSrc ? (
           <Video
+            key={videoSrc}
             src={videoSrc}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />

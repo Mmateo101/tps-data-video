@@ -29,7 +29,7 @@ const sceneComponents = [
 export const MainVideo: React.FC = () => {
   const offsets: number[] = [];
   let cumulative = 0;
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 1; i <= 10; i++) {
     offsets.push(WELCOME_FRAMES + cumulative * FPS);
     cumulative += SCENES[i];
   }
@@ -51,6 +51,9 @@ export const MainVideo: React.FC = () => {
       })}
       <Sequence from={offsets[8]} durationInFrames={SCENES[9] * FPS}>
         <Scene9Closing />
+      </Sequence>
+      <Sequence from={offsets[9]} durationInFrames={SCENES[10] * FPS}>
+        <Scene1Intro />
       </Sequence>
     </>
   );

@@ -23,8 +23,8 @@ export const FONTS = {
 };
 
 export const SCENES: Record<number, number> = {
-  1: 40, 2: 40, 3: 40, 4: 40, 5: 40,
-  6: 40, 7: 30, 8: 30, 9: 10,
+  1: 60, 2: 40, 3: 40, 4: 40, 5: 40,
+  6: 40, 7: 30, 8: 30, 9: 20, 10: 15,
 };
 
 export const PEOPLE: Record<number, { name: string; role: string; color: string }> = {
